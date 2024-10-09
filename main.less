@@ -1,4 +1,79 @@
-.container{
+@main-color: #fff;
+@font-color: #ff5858;
 
+.input-color(@color) {
+    background-color: @color;
+    border: 1px solid darken(@color, 20%);
+    color: white;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.list-color(@bg, @color) {
+    background-color: @bg;
+    color: @color;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.container {
     background: gray;
+    border-radius: 6px;
+    width: 60%;
+    margin: auto;
+    color: greenyellow;
+    padding: 20px;
+
+    fieldset {
+        margin-bottom: 10px;
+        border: 1px solid @font-color;
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid @font-color;
+            border-radius: 3px;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 5px;
+
+            &:nth-child(1) {
+                .list-color(lightblue, darkblue); 
+            }
+            &:nth-child(2) {
+                .list-color(lightgreen, darkgreen); 
+            }
+            &:nth-child(3) {
+                .list-color(lightcyan, darkcyan); 
+            }
+            &:nth-child(4) {
+                .list-color(orange, darkorange); 
+            }
+            &:nth-child(5) {
+                .list-color(lightcoral, darkred); 
+            }
+
+        }
+    }
+
+    button {
+        background-color: @font-color;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: darken(@font-color, 10%);
+        }
+    }
 }

@@ -1,4 +1,68 @@
 .container {
-    background: gray;
-  }
-  
+  background: gray;
+  border-radius: 6px;
+  width: 60%;
+  margin: auto;
+  color: greenyellow;
+  padding: 20px;
+}
+.container fieldset {
+  margin-bottom: 10px;
+  border: 1px solid #ff5858;
+}
+.container fieldset input[type="text"],
+.container fieldset input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ff5858;
+  border-radius: 3px;
+}
+.container ul {
+  list-style-type: none;
+  padding: 0;
+}
+.container ul li {
+  margin-bottom: 5px;
+}
+.container ul li:nth-child(1) {
+  background-color: lightblue;
+  color: darkblue;
+  padding: 10px;
+  border-radius: 3px;
+}
+.container ul li:nth-child(2) {
+  background-color: lightgreen;
+  color: darkgreen;
+  padding: 10px;
+  border-radius: 3px;
+}
+.container ul li:nth-child(3) {
+  background-color: lightcyan;
+  color: darkcyan;
+  padding: 10px;
+  border-radius: 3px;
+}
+.container ul li:nth-child(4) {
+  background-color: orange;
+  color: darkorange;
+  padding: 10px;
+  border-radius: 3px;
+}
+.container ul li:nth-child(5) {
+  background-color: lightcoral;
+  color: darkred;
+  padding: 10px;
+  border-radius: 3px;
+}
+.container button {
+  background-color: #ff5858;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.container button:hover {
+  background-color: #ff2525;
+}
