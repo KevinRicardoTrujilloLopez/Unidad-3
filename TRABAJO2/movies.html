@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Películas</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #7bcf51, #3498db);
+            padding: 40px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+            margin: auto;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .movie {
+            display: inline-block;
+            margin: 15px;
+            width: 200px;
+        }
+        img {
+            width: 100%;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        p {
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <h2>Listado de Películas</h2>
+            <div class="movies-grid">
+                <div v-for="movie in movies" :key="movie.id" class="movie" @click="redirectToDetails(movie.id)">
+                    <img :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`" :alt="movie.title">
+                    <p>{{ movie.title }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const movies = ref([]);
+                const apiKey = '06524ff7325ce43f515a20c7b39d58a7';
+
+                
+                const fetchMovies = async () => {
+                    try {
+                        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=es-ES&page=1`);
+                        const data = await response.json();
+                        movies.value = data.results;
+                    } catch (error) {
+                        console.error('Error al obtener las películas:', error);
+                    }
+                };
+
+                
+                const redirectToDetails = (movieId) => {
+                    localStorage.setItem('selectedMovieId', movieId); 
+                    window.location.href = 'movie.html'; 
+                };
+
+                onMounted(() => {
+                    fetchMovies();
+                });
+
+                return {
+                    movies,
+                    redirectToDetails
+                };
+            },
+        }).mount('#app');
+    </script>
+</body>
+</html>
